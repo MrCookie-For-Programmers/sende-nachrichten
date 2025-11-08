@@ -23,9 +23,13 @@ input.onGesture(Gesture.TiltRight, function () {
     aktuelle_stelle += 1
 })
 radio.onReceivedNumber(function (receivedNumber) {
-    Alphabet_warum = receivedNumber
-    if (receivedNumber == 0) {
-        Leer += 1
+    if (receivedNumber == 999) {
+        Panik = 1
+    } else {
+        Alphabet_warum = receivedNumber
+        if (receivedNumber == 0) {
+            Leer += 1
+        }
     }
 })
 input.onGesture(Gesture.ScreenDown, function () {
@@ -95,7 +99,6 @@ input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
     Alphabet_warum += 1
 })
 input.onGesture(Gesture.Shake, function () {
-    let Panik = 0
     basic.showString("Senden...")
     radio.sendNumber(stelle1)
     if (Panik == 1) {
@@ -325,6 +328,7 @@ let stelle3 = 0
 let stelle2 = 0
 let stelle1 = 0
 let Leer = 0
+let Panik = 0
 let aktuelle_stelle = 0
 let Alphabet_warum = 0
 radio.setGroup(1)
